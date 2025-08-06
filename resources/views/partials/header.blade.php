@@ -19,14 +19,14 @@
                     Beranda
                     <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
                 </a>
-                <a href="{{ route('home') }}#about" 
-                   class="px-6 py-3 text-gray-700 hover:text-orange-600 rounded-xl hover:bg-orange-50/50 transition-all duration-300 relative group font-medium">
-                    Tentang
-                    <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
-                </a>
                 <a href="{{ route('home') }}#services" 
                    class="px-6 py-3 text-gray-700 hover:text-orange-600 rounded-xl hover:bg-orange-50/50 transition-all duration-300 relative group font-medium">
                     Layanan
+                    <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
+                </a>
+                <a href="{{ route('home') }}#about" 
+                   class="px-6 py-3 text-gray-700 hover:text-orange-600 rounded-xl hover:bg-orange-50/50 transition-all duration-300 relative group font-medium">
+                    Tentang
                     <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
                 </a>
                 <a href="{{ route('home') }}#contact" 
