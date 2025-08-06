@@ -1,5 +1,4 @@
 <section id="services" class="py-20 lg:py-32 relative overflow-hidden">
-    <!-- Background Pattern -->
     <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-orange-50/30">
         <div class="absolute inset-0 opacity-30">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-100/20 to-transparent"></div>
@@ -32,10 +31,8 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($services as $index => $service)
             <div class="group relative overflow-hidden border-0 bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:scale-105 hover:-translate-y-2 rounded-lg shadow-lg">
-                <!-- Gradient Border -->
                 <div class="absolute inset-0 bg-gradient-to-br {{ $service['borderGradient'] }} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg"></div>
                 
-                <!-- Background Gradient -->
                 <div class="absolute inset-0 bg-gradient-to-br {{ $service['bgGradient'] }} opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                 
                 <div class="relative z-10 p-6 pb-4">
@@ -63,18 +60,25 @@
                         </ul>
                     </div>
                     
-                    <button class="w-full mt-6 group/button hover:bg-transparent bg-transparent border-0 text-left p-0 flex items-center justify-between">
-                        <span class="bg-gradient-to-r {{ $service['gradient'] }} bg-clip-text text-transparent group-hover/button:text-white transition-colors duration-300">
-                            Pelajari Lebih Lanjut
+                    <button 
+                        class="w-full mt-6 group/button hover:bg-gradient-to-r {{ $service['gradient'] }} bg-transparent border-2 border-gray-200 hover:border-transparent text-gray-700 hover:text-white p-3 rounded-xl transition-all duration-300 flex items-center justify-between open-service-modal"
+                        data-service-id="{{ $service['id'] }}">
+                        <span class="font-medium">
+                            Lihat Persyaratan
                         </span>
-                        <i data-lucide="arrow-up-right" class="ml-2 h-4 w-4 text-gray-400 group-hover/button:text-white transition-all duration-300 group-hover/button:translate-x-1 group-hover/button:-translate-y-1"></i>
+                        <i data-lucide="arrow-up-right" class="ml-2 h-4 w-4 group-hover/button:translate-x-1 group-hover/button:-translate-y-1 transition-all duration-300"></i>
                     </button>
                 </div>
                 
-                <!-- Hover effect overlay -->
                 <div class="absolute inset-0 bg-gradient-to-br {{ $service['gradient'] }} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-lg"></div>
             </div>
             @endforeach
         </div>
     </div>
+
+    @include('partials.service-requirements-modal')
+
+    <script type="application/json" id="services-data">
+        @json($services)
+    </script>
 </section>

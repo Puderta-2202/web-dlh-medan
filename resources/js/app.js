@@ -1,5 +1,5 @@
 import './bootstrap';
-import { createIcons, Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye, FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight, MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send, Facebook, Twitter, Instagram, Youtube, Heart, Star } from 'lucide';
+import { createIcons, Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye, FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight, MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send, Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle } from 'lucide';
 
 // Initialize Lucide icons
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye,
             FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight,
             MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send,
-            Facebook, Twitter, Instagram, Youtube, Heart, Star
+            Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle
         }
     });
     
@@ -18,7 +18,117 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScroll();
     initializeFormHandlers();
     initializeAnimations();
+    initializeServiceModal();
 });
+
+// Service Modal functionality
+function initializeServiceModal() {
+    const modal = document.getElementById('service-modal');
+    const closeBtn = document.getElementById('close-modal');
+    
+    const servicesDataScript = document.getElementById('services-data');
+    if (!servicesDataScript) {
+        console.error('Services data script not found.');
+        return;
+    }
+    const services = JSON.parse(servicesDataScript.textContent);
+
+    if (!modal) return;
+    
+    document.querySelectorAll('.open-service-modal').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Menambahkan ini untuk mencegah penyebaran event
+            
+            const serviceId = this.dataset.serviceId;
+            const service = services.find(s => s.id === serviceId);
+
+            if (service) {
+                // Populate modal dan buka
+                populateModal(service.title, service.description, service.icon, service.requirements);
+                openModal();
+            } else {
+                console.error(`Service with ID ${serviceId} not found.`);
+            }
+        });
+    });
+    
+    closeBtn?.addEventListener('click', closeModal);
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+    
+    function populateModal(title, description, icon, requirements) {
+        // ... (kode populateModal() sama seperti sebelumnya) ...
+        document.getElementById('modal-service-title').textContent = `Persyaratan ${title}`;
+        document.getElementById('modal-service-description').textContent = description;
+        
+        const iconElement = document.getElementById('modal-service-icon');
+        iconElement.setAttribute('data-lucide', icon);
+        
+        document.getElementById('modal-timeframe').textContent = requirements.timeframe || '-';
+        document.getElementById('modal-validity').textContent = requirements.validity || '-';
+        document.getElementById('modal-cost').textContent = requirements.cost || '-';
+        document.getElementById('modal-note').textContent = requirements.note || '-';
+        
+        const documentsContainer = document.getElementById('modal-documents');
+        documentsContainer.innerHTML = '';
+        
+        if (requirements.documents && requirements.documents.length > 0) {
+            requirements.documents.forEach((doc, index) => {
+                const docElement = document.createElement('div');
+                docElement.className = 'flex items-start space-x-3 p-4 hover:bg-gray-50 transition-colors duration-200';
+                docElement.innerHTML = `
+                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span class="text-white text-xs font-medium">${index + 1}</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-800 leading-relaxed">${doc}</p>
+                    </div>
+                `;
+                documentsContainer.appendChild(docElement);
+            });
+        }
+        
+        createIcons();
+    }
+    
+    function openModal() {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        const modalContent = modal.querySelector('.relative');
+        modalContent.style.transform = 'scale(0.9) translateY(20px)';
+        modalContent.style.opacity = '0';
+        
+        setTimeout(() => {
+            modalContent.style.transform = 'scale(1) translateY(0)';
+            modalContent.style.opacity = '1';
+            modalContent.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 10);
+    }
+    
+    function closeModal() {
+        const modalContent = modal.querySelector('.relative');
+        modalContent.style.transform = 'scale(0.9) translateY(20px)';
+        modalContent.style.opacity = '0';
+        modalContent.style.transition = 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 200);
+    }
+}
 
 // Header scroll effects
 function initializeHeaderScroll() {

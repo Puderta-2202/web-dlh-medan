@@ -98,64 +98,173 @@ class HomeController extends Controller
     }
 
     /**
-     * Get services data
+     * Get services data with detailed requirements
      */
     private function getServices()
     {
         return [
             [
+                'id' => 'persetujuan-lingkungan',
                 'icon' => 'file-check',
                 'title' => 'Persetujuan Lingkungan',
                 'description' => 'Penerbitan persetujuan untuk kegiatan yang berpotensi menimbulkan dampak lingkungan.',
                 'features' => ['Evaluasi dokumen', 'Verifikasi lapangan', 'Penerbitan surat persetujuan'],
                 'gradient' => 'from-orange-500 to-red-500',
                 'bgGradient' => 'from-orange-50 to-red-50',
-                'borderGradient' => 'from-orange-200 to-red-200'
+                'borderGradient' => 'from-orange-200 to-red-200',
+                'requirements' => [
+                    'documents' => [
+                        'Surat permohonan yang ditandatangani di atas materai',
+                        'Fotocopy KTP/Identitas pemohon',
+                        'Fotocopy Akta Pendirian Perusahaan',
+                        'Fotocopy NPWP Perusahaan',
+                        'Fotocopy Surat Izin Usaha',
+                        'Dokumen UKL-UPL yang telah disahkan',
+                        'Peta lokasi skala 1:10.000',
+                        'Denah layout kegiatan',
+                        'Surat pernyataan kesanggupan mentaati ketentuan'
+                    ],
+                    'timeframe' => '14 hari kerja',
+                    'cost' => 'Sesuai Perda Kota Medan',
+                    'validity' => '5 tahun',
+                    'note' => 'Persetujuan lingkungan wajib dimiliki sebelum memulai kegiatan usaha yang berpotensi mencemari lingkungan.'
+                ]
             ],
             [
+                'id' => 'amdal',
                 'icon' => 'bar-chart-3',
                 'title' => 'AMDAL',
                 'description' => 'Analisis Mengenai Dampak Lingkungan Hidup untuk kegiatan besar yang berpotensi menimbulkan dampak penting.',
                 'features' => ['Penyusunan ANDAL', 'RKL-RPL', 'Komisi penilai AMDAL'],
                 'gradient' => 'from-emerald-500 to-green-500',
                 'bgGradient' => 'from-emerald-50 to-green-50',
-                'borderGradient' => 'from-emerald-200 to-green-200'
+                'borderGradient' => 'from-emerald-200 to-green-200',
+                'requirements' => [
+                    'documents' => [
+                        'Surat permohonan yang ditandatangani di atas materai',
+                        'Formulir isian AMDAL',
+                        'Dokumen ANDAL (Analisis Dampak Lingkungan)',
+                        'Dokumen RKL (Rencana Kelola Lingkungan)',
+                        'Dokumen RPL (Rencana Pemantauan Lingkungan)',
+                        'Fotocopy akta pendirian perusahaan',
+                        'Fotocopy NPWP dan SIUP',
+                        'Peta topografi skala 1:25.000',
+                        'Dokumen studi kelayakan',
+                        'Fotocopy IMB/surat keterangan lokasi',
+                        'Surat pernyataan kesanggupan melaksanakan RKL-RPL'
+                    ],
+                    'timeframe' => '75 hari kerja',
+                    'cost' => 'Sesuai tingkat kompleksitas studi',
+                    'validity' => 'Sesuai masa operasi kegiatan',
+                    'note' => 'AMDAL wajib untuk kegiatan yang menimbulkan dampak penting bagi lingkungan sesuai kriteria dalam PP 22/2021.'
+                ]
             ],
             [
+                'id' => 'skkl',
                 'icon' => 'check-circle',
                 'title' => 'SKKL',
                 'description' => 'Keputusan Kelayakan Lingkungan Hidup sebagai hasil penilaian AMDAL.',
                 'features' => ['Penilaian kelayakan', 'Penetapan persyaratan', 'Monitoring berkala'],
                 'gradient' => 'from-blue-500 to-cyan-500',
                 'bgGradient' => 'from-blue-50 to-cyan-50',
-                'borderGradient' => 'from-blue-200 to-cyan-200'
+                'borderGradient' => 'from-blue-200 to-cyan-200',
+                'requirements' => [
+                    'documents' => [
+                        'Dokumen AMDAL yang telah disetujui komisi penilai',
+                        'Surat permohonan SKKL bermaterai',
+                        'Berita acara rapat komisi penilai AMDAL',
+                        'Dokumen ANDAL yang telah disahkan',
+                        'Dokumen RKL-RPL yang telah disahkan',
+                        'Surat pernyataan kesanggupan melaksanakan RKL-RPL',
+                        'Fotocopy izin lokasi/HGB',
+                        'Peta detail lokasi kegiatan'
+                    ],
+                    'timeframe' => '14 hari kerja setelah AMDAL disetujui',
+                    'cost' => 'Tidak dipungut biaya',
+                    'validity' => 'Sesuai dengan masa berlaku AMDAL',
+                    'note' => 'SKKL diterbitkan berdasarkan hasil penilaian AMDAL yang telah disetujui komisi penilai.'
+                ]
             ],
             [
+                'id' => 'ukl-upl',
                 'icon' => 'settings',
                 'title' => 'UKL-UPL',
                 'description' => 'Upaya Pengelolaan dan Pemantauan Lingkungan Hidup untuk kegiatan dengan dampak penting tidak besar.',
                 'features' => ['Formulir UKL-UPL', 'Evaluasi dampak', 'Rekomendasi pengelolaan'],
                 'gradient' => 'from-purple-500 to-indigo-500',
                 'bgGradient' => 'from-purple-50 to-indigo-50',
-                'borderGradient' => 'from-purple-200 to-indigo-200'
+                'borderGradient' => 'from-purple-200 to-indigo-200',
+                'requirements' => [
+                    'documents' => [
+                        'Formulir UKL-UPL yang telah diisi lengkap',
+                        'Surat permohonan bermaterai',
+                        'Fotocopy KTP direktur/penanggung jawab',
+                        'Fotocopy akta pendirian perusahaan',
+                        'Fotocopy NPWP perusahaan',
+                        'Fotocopy SIUP/NIB',
+                        'Peta lokasi kegiatan skala 1:10.000',
+                        'Denah layout/site plan',
+                        'Uraian rencana kegiatan',
+                        'Surat pernyataan kebenaran dokumen'
+                    ],
+                    'timeframe' => '12 hari kerja',
+                    'cost' => 'Sesuai Perda Kota Medan',
+                    'validity' => 'Sesuai masa operasi kegiatan',
+                    'note' => 'UKL-UPL diperlukan untuk kegiatan yang tidak termasuk dalam kriteria wajib AMDAL.'
+                ]
             ],
             [
+                'id' => 'pkplh',
                 'icon' => 'file-text',
                 'title' => 'PKPLH',
                 'description' => 'Pernyataan Kesanggupan Pengelolaan Lingkungan Hidup untuk usaha atau kegiatan tertentu.',
                 'features' => ['Formulir pernyataan', 'Komitmen pengelolaan', 'Pemantauan mandiri'],
                 'gradient' => 'from-teal-500 to-emerald-500',
                 'bgGradient' => 'from-teal-50 to-emerald-50',
-                'borderGradient' => 'from-teal-200 to-emerald-200'
+                'borderGradient' => 'from-teal-200 to-emerald-200',
+                'requirements' => [
+                    'documents' => [
+                        'Formulir PKPLH yang telah diisi dan ditandatangani',
+                        'Surat permohonan bermaterai',
+                        'Fotocopy KTP pemohon',
+                        'Fotocopy NPWP (jika ada)',
+                        'Fotocopy surat izin usaha',
+                        'Denah lokasi kegiatan',
+                        'Deskripsi kegiatan usaha',
+                        'Surat pernyataan kebenaran data',
+                        'Foto kegiatan (jika sudah beroperasi)'
+                    ],
+                    'timeframe' => '7 hari kerja',
+                    'cost' => 'Tidak dipungut biaya',
+                    'validity' => '3 tahun',
+                    'note' => 'PKPLH untuk usaha mikro dan kecil yang tidak termasuk kategori wajib UKL-UPL atau AMDAL.'
+                ]
             ],
             [
+                'id' => 'sppl',
                 'icon' => 'clipboard-list',
                 'title' => 'SPPL',
                 'description' => 'Surat Pernyataan Kesanggupan Pengelolaan dan Pemantauan Lingkungan Hidup.',
                 'features' => ['Registrasi online', 'Self assessment', 'Laporan berkala'],
                 'gradient' => 'from-amber-500 to-yellow-500',
                 'bgGradient' => 'from-amber-50 to-yellow-50',
-                'borderGradient' => 'from-amber-200 to-yellow-200'
+                'borderGradient' => 'from-amber-200 to-yellow-200',
+                'requirements' => [
+                    'documents' => [
+                        'Formulir SPPL online',
+                        'Fotocopy KTP pemohon',
+                        'Fotocopy NPWP (jika ada)',
+                        'Surat keterangan domisili usaha',
+                        'Denah sederhana lokasi usaha',
+                        'Deskripsi singkat kegiatan usaha',
+                        'Bukti pembayaran (jika dikenakan retribusi)',
+                        'Surat pernyataan kesanggupan'
+                    ],
+                    'timeframe' => '3 hari kerja',
+                    'cost' => 'Gratis',
+                    'validity' => '3 tahun',
+                    'note' => 'SPPL dapat diajukan secara online untuk usaha dengan dampak lingkungan minimal.'
+                ]
             ]
         ];
     }
@@ -218,7 +327,7 @@ class HomeController extends Controller
             [
                 'icon' => 'map-pin',
                 'title' => 'Alamat Kantor',
-                'content' => 'Jl. Pinang Baris No.114, Lalang, Kec. Medan Sunggal, Kota Medan, Sumatera Utara 20127',
+                'content' => 'Jl. Kapten Muslim No.16, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20112',
                 'gradient' => 'from-orange-500 to-red-500',
                 'bgGradient' => 'from-orange-50 to-red-50'
             ],
@@ -239,7 +348,7 @@ class HomeController extends Controller
             [
                 'icon' => 'clock',
                 'title' => 'Jam Operasional',
-                'content' => "Senin - Kamis: 08:00 - 16:30 WIB\n Jumat: 08:00 - 17:00 WIB\nSabtu - Minggu: Tutup",
+                'content' => "Senin - Jumat: 08:00 - 16:00 WIB\nSabtu - Minggu: Tutup",
                 'gradient' => 'from-purple-500 to-indigo-500',
                 'bgGradient' => 'from-purple-50 to-indigo-50'
             ]
@@ -252,7 +361,7 @@ class HomeController extends Controller
     private function getQuickLinks()
     {
         return [
-            ['label' => 'Website Resmi DLH Kota Medan', 'href' => 'https://dlh.medan.go.id/web/', 'icon' => 'external-link'],
+            ['label' => 'Portal Perizinan Online', 'href' => '#', 'icon' => 'external-link'],
             ['label' => 'Pengaduan Lingkungan', 'href' => '#', 'icon' => 'message-circle'],
             ['label' => 'Download Formulir', 'href' => '#', 'icon' => 'external-link'],
             ['label' => 'Panduan Layanan', 'href' => '#', 'icon' => 'external-link']

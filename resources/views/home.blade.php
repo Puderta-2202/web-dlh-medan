@@ -112,3 +112,22 @@
 @include('partials.contact', ['contactInfo' => $contactInfo])
 
 @endsection
+
+@push('scripts')
+<script>
+// Additional script for service modal if needed
+document.addEventListener('DOMContentLoaded', function() {
+    // Custom initialization for service modal can go here
+    console.log('DLH Website loaded successfully');
+    
+    // Add any additional modal behaviors
+    const modal = document.getElementById('service-modal');
+    if (modal) {
+        // Add custom modal behaviors here if needed
+        modal.addEventListener('show', function() {
+            console.log('Service modal opened');
+        });
+    }
+});
+</script>
+@endpush
