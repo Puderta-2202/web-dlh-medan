@@ -327,7 +327,7 @@ class HomeController extends Controller
             [
                 'icon' => 'map-pin',
                 'title' => 'Alamat Kantor',
-                'content' => 'Jl. Kapten Muslim No.16, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20112',
+                'content' => 'Jl. Pinang Baris No.114, Lalang, Kec. Medan Sunggal, Kota Medan, Sumatera Utara 20127',
                 'gradient' => 'from-orange-500 to-red-500',
                 'bgGradient' => 'from-orange-50 to-red-50'
             ],
@@ -348,7 +348,7 @@ class HomeController extends Controller
             [
                 'icon' => 'clock',
                 'title' => 'Jam Operasional',
-                'content' => "Senin - Jumat: 08:00 - 16:00 WIB\nSabtu - Minggu: Tutup",
+                'content' => "Senin - Jumat: 08:00 - 16:00 WIB\nJum'at: 08:00 - 17:00 WIB\nSabtu - Minggu: Tutup",
                 'gradient' => 'from-purple-500 to-indigo-500',
                 'bgGradient' => 'from-purple-50 to-indigo-50'
             ]

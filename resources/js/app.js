@@ -1,16 +1,18 @@
 import './bootstrap';
 import { createIcons, Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye, FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight, MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send, Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle } from 'lucide';
 
+// Buat objek ikon yang dapat diakses secara global
+const allIcons = {
+    Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye,
+    FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight,
+    MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send,
+    Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle
+};
+
 // Initialize Lucide icons
 document.addEventListener('DOMContentLoaded', function() {
-    // Create all icons
     createIcons({
-        icons: {
-            Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye,
-            FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight,
-            MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send,
-            Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle
-        }
+        icons: allIcons
     });
     
     initializeHeaderScroll();
@@ -35,22 +37,22 @@ function initializeServiceModal() {
 
     if (!modal) return;
     
-    document.querySelectorAll('.open-service-modal').forEach(button => {
-        button.addEventListener('click', function(e) {
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('.open-service-modal');
+        if (button) {
             e.preventDefault();
-            e.stopPropagation(); // Menambahkan ini untuk mencegah penyebaran event
+            e.stopPropagation();
             
-            const serviceId = this.dataset.serviceId;
+            const serviceId = button.dataset.serviceId;
             const service = services.find(s => s.id === serviceId);
 
             if (service) {
-                // Populate modal dan buka
                 populateModal(service.title, service.description, service.icon, service.requirements);
                 openModal();
             } else {
                 console.error(`Service with ID ${serviceId} not found.`);
             }
-        });
+        }
     });
     
     closeBtn?.addEventListener('click', closeModal);
@@ -68,7 +70,6 @@ function initializeServiceModal() {
     });
     
     function populateModal(title, description, icon, requirements) {
-        // ... (kode populateModal() sama seperti sebelumnya) ...
         document.getElementById('modal-service-title').textContent = `Persyaratan ${title}`;
         document.getElementById('modal-service-description').textContent = description;
         
@@ -99,7 +100,7 @@ function initializeServiceModal() {
             });
         }
         
-        createIcons();
+        createIcons({ icons: allIcons });
     }
     
     function openModal() {
@@ -165,7 +166,6 @@ function initializeMobileMenu() {
             }
         });
         
-        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
                 mobileMenu.classList.add('hidden');
@@ -195,7 +195,6 @@ function initializeSmoothScroll() {
                     behavior: 'smooth'
                 });
                 
-                // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
@@ -214,7 +213,6 @@ function initializeSmoothScroll() {
 
 // Form handlers
 function initializeFormHandlers() {
-    // Contact form
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -226,7 +224,6 @@ function initializeFormHandlers() {
         });
     }
     
-    // Newsletter form
     const newsletterForms = document.querySelectorAll('form[action*="newsletter"]');
     newsletterForms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -238,7 +235,6 @@ function initializeFormHandlers() {
         });
     });
     
-    // Show success/error messages
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('success')) {
         showNotification('Pesan berhasil dikirim!', 'success');
@@ -250,7 +246,6 @@ function initializeFormHandlers() {
 
 // Animations and interactions
 function initializeAnimations() {
-    // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -264,12 +259,10 @@ function initializeAnimations() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
     document.querySelectorAll('.group, .card, .service-item').forEach(el => {
         observer.observe(el);
     });
     
-    // Parallax effect for hero background elements
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.parallax');
@@ -294,12 +287,10 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.classList.remove('translate-x-full');
     }, 100);
     
-    // Auto remove
     setTimeout(() => {
         notification.classList.add('translate-x-full');
         setTimeout(() => {

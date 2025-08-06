@@ -69,16 +69,21 @@
                             <div class="absolute bottom-4 right-4 w-32 h-32 bg-gradient-to-br from-red-400/20 to-yellow-400/20 rounded-full blur-xl"></div>
                             
                             <div class="relative text-center text-gray-600 z-10">
-                                <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-5 shadow-lg">
-                                    <i data-lucide="map-pin" class="h-10 w-10 text-white"></i>
-                                </div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Peta Lokasi Kantor</h3>
-                                <p class="text-sm text-gray-600">Dinas Lingkungan Hidup Kota Medan</p>
-                                <a href="https://maps.app.goo.gl/7uqKURtkJpBz2VeB7" target="_blank" class="inline-flex items-center mt-4 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl transition-all duration-300">
-                                    Lihat di Google Maps
-                                    <i data-lucide="external-link" class="ml-2 h-4 w-4"></i>
-                                </a>
-                            </div>
+    <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-5 shadow-lg">
+        <i data-lucide="map-pin" class="h-10 w-10 text-white"></i>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Peta Lokasi Kantor</h3>
+    <p class="text-sm text-gray-600">Dinas Lingkungan Hidup Kota Medan</p>
+    
+    <div class="mt-4 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.99632535794!2d98.60805429999999!3d3.5883170999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312ff573e7ac5d%3A0xbc965d852d16d501!2sDinas%20Lingkungan%20Hidup%20Kota%20Medan!5e0!3m2!1sen!2sid!4v1754472174922!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    
+    <a href="https://maps.app.goo.gl/7uqKURtkJpBz2VeB7" target="_blank" class="inline-flex items-center mt-4 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl transition-all duration-300">
+        Lihat di Google Maps
+        <i data-lucide="external-link" class="ml-2 h-4 w-4"></i>
+    </a>
+</div>
                         </div>
                     </div>
                 </div>

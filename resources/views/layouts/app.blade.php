@@ -6,8 +6,9 @@
     <title>@yield('title', 'Dinas Lingkungan Hidup Kota Medan')</title>
     <meta name="description" content="@yield('description', 'Dinas Lingkungan Hidup Kota Medan - Melayani masyarakat dalam pengelolaan dan perlindungan lingkungan hidup untuk mewujudkan Kota Medan yang bersih, hijau, dan berkelanjutan.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="icon" type="image/png" href="{{ asset('asset/logo-dlh.png') }}">
     
-    <!-- Tailwind CSS dan JavaScript -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     @stack('styles')
@@ -107,18 +108,14 @@
     </style>
 </head>
 <body class="min-h-screen bg-background text-foreground antialiased">
-    <!-- Header -->
     @include('partials.header')
     
-    <!-- Main Content -->
     <main>
         @yield('content')
     </main>
     
-    <!-- Footer -->
     @include('partials.footer')
     
-    <!-- Global Scripts -->
     <script>
         // Global variables and utilities
         window.DLH = {
@@ -147,8 +144,16 @@
             }
         };
         
-        // Debug: Check if elements are loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Panggil semua fungsi inisialisasi dari app.js di sini
+            if (typeof initializeServiceModal === 'function') {
+                initializeServiceModal();
+                console.log('✅ initializeServiceModal() has been called');
+            } else {
+                console.error('❌ initializeServiceModal() function not found');
+            }
+            
+            // Debug: Check if elements are loaded
             console.log('✅ Laravel DLH Website loaded');
             
             // Check modal element

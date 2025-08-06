@@ -62,7 +62,8 @@
                     
                     <button 
                         class="w-full mt-6 group/button hover:bg-gradient-to-r {{ $service['gradient'] }} bg-transparent border-2 border-gray-200 hover:border-transparent text-gray-700 hover:text-white p-3 rounded-xl transition-all duration-300 flex items-center justify-between open-service-modal"
-                        data-service-id="{{ $service['id'] }}">
+                        data-service-id="{{ $service['id'] }}"
+                        data-service-title="{{ $service['title'] }}">
                         <span class="font-medium">
                             Lihat Persyaratan
                         </span>
