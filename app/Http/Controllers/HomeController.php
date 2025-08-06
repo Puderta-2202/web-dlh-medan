@@ -252,7 +252,7 @@ class HomeController extends Controller
     private function getQuickLinks()
     {
         return [
-            ['label' => 'Portal Perizinan Online', 'href' => '#', 'icon' => 'external-link'],
+            ['label' => 'Website Resmi DLH Kota Medan', 'href' => 'https://dlh.medan.go.id/web/', 'icon' => 'external-link'],
             ['label' => 'Pengaduan Lingkungan', 'href' => '#', 'icon' => 'message-circle'],
             ['label' => 'Download Formulir', 'href' => '#', 'icon' => 'external-link'],
             ['label' => 'Panduan Layanan', 'href' => '#', 'icon' => 'external-link']

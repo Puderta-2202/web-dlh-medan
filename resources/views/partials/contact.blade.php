@@ -94,7 +94,7 @@
                     <div class="px-6 pb-6 space-y-3">
                         @php
                         $quickLinks = [
-                            ['label' => 'Portal Perizinan Online', 'href' => '#', 'icon' => 'external-link'],
+                            ['label' => 'Website Resmi DLH Kota Medan', 'href' => 'https://dlh.medan.go.id/web/', 'icon' => 'external-link'],
                             ['label' => 'Pengaduan Lingkungan', 'href' => '#', 'icon' => 'message-circle'],
                             ['label' => 'Download Formulir', 'href' => '#', 'icon' => 'external-link'],
                             ['label' => 'Panduan Layanan', 'href' => '#', 'icon' => 'external-link']
