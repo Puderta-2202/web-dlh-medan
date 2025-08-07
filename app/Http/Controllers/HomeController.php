@@ -17,7 +17,7 @@ class HomeController extends Controller
         $stats = $this->getStats();
         $values = $this->getValues();
         $contactInfo = $this->getContactInfo();
-        
+
         return view('home', compact('services', 'stats', 'values', 'contactInfo'));
     }
 
@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         $values = $this->getValues();
         $stats = $this->getStats();
-        
+
         return view('about', compact('values', 'stats'));
     }
 
@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function services()
     {
         $services = $this->getServices();
-        
+
         return view('services', compact('services'));
     }
 
@@ -49,7 +49,7 @@ class HomeController extends Controller
     {
         $contactInfo = $this->getContactInfo();
         $quickLinks = $this->getQuickLinks();
-        
+
         return view('contact', compact('contactInfo', 'quickLinks'));
     }
 
@@ -363,16 +363,16 @@ class HomeController extends Controller
                 'bgGradient' => 'from-orange-50 to-red-50'
             ],
             [
-                'icon' => 'phone',
-                'title' => 'Telepon',
-                'content' => '+62 61 4567890',
+                'icon' => 'whatsapp',
+                'title' => 'WhatsApp',
+                'content' => '+6282386993101',
                 'gradient' => 'from-emerald-500 to-green-500',
                 'bgGradient' => 'from-emerald-50 to-green-50'
             ],
             [
                 'icon' => 'mail',
                 'title' => 'Email',
-                'content' => 'info@dlh.pemkomedan.go.id',
+                'content' => 'dlhmedan@gmail.com',
                 'gradient' => 'from-blue-500 to-cyan-500',
                 'bgGradient' => 'from-blue-50 to-cyan-50'
             ],

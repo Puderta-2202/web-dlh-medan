@@ -39,8 +39,20 @@
             <div class="lg:col-span-2 space-y-8">
                 <div class="grid md:grid-cols-2 gap-6">
                     @foreach($contactInfo as $info)
-                    <div
-                        class="group relative overflow-hidden border-0 bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:scale-105 rounded-lg shadow-lg">
+                    @php
+                    $link = '#';
+                    if ($info['icon'] === 'whatsapp') {
+                    // Ubah format nomor telepon untuk WhatsApp
+                    $phoneNumber = str_replace(['+',' '], '', $info['content']);
+                    $link = 'https://wa.me/' . $phoneNumber;
+                    } elseif ($info['icon'] === 'phone') {
+                    $link = 'tel:' . str_replace(' ', '', $info['content']);
+                    } elseif ($info['icon'] === 'mail') {
+                    $link = 'mailto:' . $info['content'];
+                    }
+                    @endphp
+                    <a href="{{ $link }}" target="_blank"
+                        class="block group relative overflow-hidden border-0 bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:scale-105 rounded-lg shadow-lg">
                         <div
                             class="absolute inset-0 bg-gradient-to-br {{ $info['bgGradient'] }} opacity-0 group-hover:opacity-30 transition-opacity duration-500">
                         </div>
@@ -48,14 +60,22 @@
                         <div class="relative z-10 p-6 pb-3">
                             <div
                                 class="w-16 h-16 rounded-2xl bg-gradient-to-br {{ $info['gradient'] }} p-4 mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                                @if($info['icon'] === 'whatsapp')
+                                <svg class="h-8 w-8 text-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512">
+                                    <path fill="currentColor"
+                                        d="M380.9 97.1C339.6 50.8 281.3 25.1 219.7 25.1c-109.9 0-199 89.1-199 199 0 34.3 8.9 67.6 25.8 96.9L4 468.9l104.9-27.6c28.6 15.6 61.1 23.9 96.6 23.9h.1c109.9 0 199-89.1 199-199.1 0-58.4-25.5-111.4-66.5-149.9zM219.7 435.2h-.1c-29.8 0-57.8-8-82.5-23.3l-5.6-3.3-58.5 15.4 15.6-56.7-3.7-5.9c-16.7-26.6-25.5-57.6-25.5-89.9 0-85.3 69.1-154.4 154.4-154.4 44.5 0 85.8 18.5 115.9 48.6s48.6 71.4 48.6 115.9c0 85.3-69.1 154.4-154.4 154.4zm100.9-106.1c-5.5-2.7-32.9-16.1-38-18.1-5.1-2.7-8.8-4.2-12.5-4.2-3.8 0-7.5 2.7-11.2 5.5s-14.7 17.8-18 21.6-6.6 4.1-12.1 1.4-23.7-8.7-45.2-27.9c-16.9-14.8-28.4-33.1-31.7-38.7-3.3-5.5-.3-8.6 2.4-11.2 2.4-2.4 5.5-6.5 8.3-9.7 2.7-3 3.6-5.5 5.5-9.2s1.4-7 1-12.5c-.4-4.8-4.1-11.9-8.5-16.4s-9.3-8.3-13.3-10.4c-4-2.1-8.7-5.1-12.5-4.5s-7.8 0-11.9 0c-4.1 0-7.5-1.4-11.2 5.5-3.7 6.9-14.2 17.3-14.2 42.2s14.6 48.9 16.7 52.6 28.5 43.1 69.3 62.1 100.8 41.5 119.7 39.2c18.9-2.3 30.2-15.5 35-31.7 4.7-16.2 4.7-30 3.3-32.9s-5.5-2.7-11.2-5.5z" />
+                                </svg>
+                                @else
                                 <i data-lucide="{{ $info['icon'] }}" class="h-8 w-8 text-white"></i>
+                                @endif
                             </div>
                             <h3 class="text-lg text-gray-900 font-semibold">{{ $info['title'] }}</h3>
                         </div>
                         <div class="relative z-10 px-6 pb-6">
                             <p class="text-gray-600 leading-relaxed whitespace-pre-line">{{ $info['content'] }}</p>
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
 
@@ -129,13 +149,13 @@
                             masalah terkait layanan lingkungan hidup.
                         </p>
                         <div class="space-y-3">
-                            <a href="#"
+                            <a href="https://wa.me/+6282386993101"
                                 class="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl shadow-lg hover:shadow-orange-500/25 transition-all duration-300 group">
                                 <i data-lucide="message-circle"
                                     class="mr-2 h-4 w-4 group-hover:scale-110 transition-transform duration-300"></i>
                                 Chat dengan Kami
                             </a>
-                            <a href="tel:+6261456789"
+                            <a href="tel:+6282386993101"
                                 class="w-full flex items-center justify-center px-6 py-3 border-2 border-orange-200 text-orange-700 hover:bg-orange-50 hover:border-orange-300 rounded-xl transition-all duration-300 group">
                                 <i data-lucide="phone"
                                     class="mr-2 h-4 w-4 group-hover:scale-110 transition-transform duration-300"></i>
@@ -160,9 +180,9 @@
                             </p>
                             <div
                                 class="text-2xl font-bold bg-gradient-to-r from-orange-700 to-red-700 bg-clip-text text-transparent">
-                                0800-1234-5678
+                                +6282386993101
                             </div>
-                            <a href="tel:08001234578"
+                            <a href="tel:+6282386993101"
                                 class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl shadow-lg transition-all duration-300">
                                 <i data-lucide="send" class="mr-1 h-3 w-3"></i>
                                 Hubungi Sekarang
