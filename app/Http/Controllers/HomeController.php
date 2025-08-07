@@ -112,6 +112,11 @@ class HomeController extends Controller
                 'gradient' => 'from-orange-500 to-red-500',
                 'bgGradient' => 'from-orange-50 to-red-50',
                 'borderGradient' => 'from-orange-200 to-red-200',
+                'download_url' => asset('asset/Document/CV.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang persyaratan Persetujuan Lingkungan.',
+                    'Saya ingin membuat janji konsultasi Persetujuan Lingkungan.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Surat permohonan yang ditandatangani di atas materai',
@@ -139,6 +144,12 @@ class HomeController extends Controller
                 'gradient' => 'from-emerald-500 to-green-500',
                 'bgGradient' => 'from-emerald-50 to-green-50',
                 'borderGradient' => 'from-emerald-200 to-green-200',
+                'download_url' => asset('asset/forms/form-amdal.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang persyaratan AMDAL.',
+                    'Saya ingin membuat janji konsultasi AMDAL.',
+                    'Saya ingin menanyakan status permohonan AMDAL saya.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Surat permohonan yang ditandatangani di atas materai',
@@ -168,6 +179,11 @@ class HomeController extends Controller
                 'gradient' => 'from-blue-500 to-cyan-500',
                 'bgGradient' => 'from-blue-50 to-cyan-50',
                 'borderGradient' => 'from-blue-200 to-cyan-200',
+                'download_url' => asset('asset/forms/form-skkl.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang SKKL.',
+                    'Saya ingin menanyakan status permohonan SKKL saya.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Dokumen AMDAL yang telah disetujui komisi penilai',
@@ -194,6 +210,11 @@ class HomeController extends Controller
                 'gradient' => 'from-purple-500 to-indigo-500',
                 'bgGradient' => 'from-purple-50 to-indigo-50',
                 'borderGradient' => 'from-purple-200 to-indigo-200',
+                'download_url' => asset('asset/forms/form-ukl-upl.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang UKL-UPL.',
+                    'Saya ingin membuat janji konsultasi UKL-UPL.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Formulir UKL-UPL yang telah diisi lengkap',
@@ -222,6 +243,11 @@ class HomeController extends Controller
                 'gradient' => 'from-teal-500 to-emerald-500',
                 'bgGradient' => 'from-teal-50 to-emerald-50',
                 'borderGradient' => 'from-teal-200 to-emerald-200',
+                'download_url' => asset('asset/forms/form-pkplh.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang persyaratan PKPLH.',
+                    'Saya ingin membuat janji konsultasi PKPLH.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Formulir PKPLH yang telah diisi dan ditandatangani',
@@ -249,6 +275,11 @@ class HomeController extends Controller
                 'gradient' => 'from-amber-500 to-yellow-500',
                 'bgGradient' => 'from-amber-50 to-yellow-50',
                 'borderGradient' => 'from-amber-200 to-yellow-200',
+                'download_url' => asset('asset/forms/form-sppl.pdf'),
+                'wa_messages' => [
+                    'Saya ingin bertanya tentang persyaratan SPPL.',
+                    'Saya ingin menanyakan status permohonan SPPL saya.',
+                ],
                 'requirements' => [
                     'documents' => [
                         'Formulir SPPL online',
@@ -361,7 +392,7 @@ class HomeController extends Controller
     private function getQuickLinks()
     {
         return [
-            ['label' => 'Portal Perizinan Online', 'href' => '#', 'icon' => 'external-link'],
+            ['label' => 'Website Resmi DLH Kota Medan', 'href' => 'https://dlh.medan.go.id/web/', 'icon' => 'external-link'],
             ['label' => 'Pengaduan Lingkungan', 'href' => '#', 'icon' => 'message-circle'],
             ['label' => 'Download Formulir', 'href' => '#', 'icon' => 'external-link'],
             ['label' => 'Panduan Layanan', 'href' => '#', 'icon' => 'external-link']

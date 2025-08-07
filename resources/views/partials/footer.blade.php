@@ -16,7 +16,7 @@
             <div class="lg:col-span-1 space-y-6">
                 <div class="flex items-center group cursor-pointer">
                     <img 
-                        src="{{ asset('asset/logo-dlh.png') }}" 
+                        src="{{ asset('asset/Images/logo-dlh.png') }}" 
                         alt="Dinas Lingkungan Hidup Kota Medan" 
                         class="h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
                     />
@@ -162,7 +162,7 @@
                     <span>untuk lingkungan yang lebih baik.</span>
                 </div>
                 <div class="flex space-x-6 text-sm">
-                    @foreach(['Kebijakan Privasi', 'Syarat & Ketentuan', 'Sitemap'] as $item)
+                    @foreach(['Kebijakan Privasi', 'Syarat & Ketentuan'] as $item)
                     <a href="#" class="text-gray-400 hover:text-orange-400 transition-colors duration-300 relative group">
                         {{ $item }}
                         <span class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-orange-500 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>

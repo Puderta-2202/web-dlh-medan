@@ -80,7 +80,7 @@
                     <!-- Main image container -->
                     <div class="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 border border-white/20 shadow-2xl">
                         <img
-                            src="{{ asset('asset/halo.png') }}"
+                            src="{{ asset('asset/Images/halo.png') }}"
                             alt="Lingkungan Hidup Medan"
                             class="rounded-2xl shadow-xl w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
                         />

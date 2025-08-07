@@ -1,7 +1,6 @@
 import './bootstrap';
 import { createIcons, Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye, FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight, MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle, Send, Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle } from 'lucide';
 
-// Buat objek ikon yang dapat diakses secara global
 const allIcons = {
     Menu, X, ArrowRight, Shield, Users, Award, Sparkles, Building, Target, Eye,
     FileCheck, BarChart3, CheckCircle, Settings, FileText, ClipboardList, ArrowUpRight,
@@ -9,7 +8,6 @@ const allIcons = {
     Facebook, Twitter, Instagram, Youtube, Heart, Star, Download, Calendar, CreditCard, AlertCircle
 };
 
-// Initialize Lucide icons
 document.addEventListener('DOMContentLoaded', function() {
     createIcons({
         icons: allIcons
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeServiceModal();
 });
 
-// Service Modal functionality
 function initializeServiceModal() {
     const modal = document.getElementById('service-modal');
     const closeBtn = document.getElementById('close-modal');
@@ -47,7 +44,8 @@ function initializeServiceModal() {
             const service = services.find(s => s.id === serviceId);
 
             if (service) {
-                populateModal(service.title, service.description, service.icon, service.requirements);
+                // Perbaikan: Meneruskan seluruh objek 'service'
+                populateModal(service);
                 openModal();
             } else {
                 console.error(`Service with ID ${serviceId} not found.`);
@@ -69,23 +67,27 @@ function initializeServiceModal() {
         }
     });
     
-    function populateModal(title, description, icon, requirements) {
-        document.getElementById('modal-service-title').textContent = `Persyaratan ${title}`;
-        document.getElementById('modal-service-description').textContent = description;
+    // Perbaikan: Fungsi sekarang menerima seluruh objek layanan
+    function populateModal(service) {
+        document.getElementById('modal-service-title').textContent = `Persyaratan ${service.title}`;
+        document.getElementById('modal-service-description').textContent = service.description;
         
         const iconElement = document.getElementById('modal-service-icon');
-        iconElement.setAttribute('data-lucide', icon);
+        iconElement.setAttribute('data-lucide', service.icon);
         
-        document.getElementById('modal-timeframe').textContent = requirements.timeframe || '-';
-        document.getElementById('modal-validity').textContent = requirements.validity || '-';
-        document.getElementById('modal-cost').textContent = requirements.cost || '-';
-        document.getElementById('modal-note').textContent = requirements.note || '-';
+        document.getElementById('modal-timeframe').textContent = service.requirements.timeframe || '-';
+        document.getElementById('modal-validity').textContent = service.requirements.validity || '-';
+        document.getElementById('modal-cost').textContent = service.requirements.cost || '-';
+        document.getElementById('modal-note').textContent = service.requirements.note || '-';
         
         const documentsContainer = document.getElementById('modal-documents');
+        const waMessageContainer = document.getElementById('wa-message-container');
+        const waMessageSelect = document.getElementById('wa-message-select');
+
+        // Mengisi dokumen
         documentsContainer.innerHTML = '';
-        
-        if (requirements.documents && requirements.documents.length > 0) {
-            requirements.documents.forEach((doc, index) => {
+        if (service.requirements.documents && service.requirements.documents.length > 0) {
+            service.requirements.documents.forEach((doc, index) => {
                 const docElement = document.createElement('div');
                 docElement.className = 'flex items-start space-x-3 p-4 hover:bg-gray-50 transition-colors duration-200';
                 docElement.innerHTML = `
@@ -100,7 +102,57 @@ function initializeServiceModal() {
             });
         }
         
+        // Mengisi pilihan pesan WhatsApp
+        if (service.wa_messages && service.wa_messages.length > 1) {
+            waMessageContainer.classList.remove('hidden');
+            waMessageSelect.innerHTML = '';
+            service.wa_messages.forEach((message, index) => {
+                const option = document.createElement('option');
+                option.value = message;
+                option.textContent = message;
+                if (index === 0) {
+                    option.selected = true;
+                }
+                waMessageSelect.appendChild(option);
+            });
+        } else {
+            waMessageContainer.classList.add('hidden');
+        }
+        
         createIcons({ icons: allIcons });
+
+        // Fungsionalitas tombol
+        const downloadBtn = document.getElementById('download-form-btn');
+        if (downloadBtn) {
+            downloadBtn.onclick = function() {
+                if (service.download_url) {
+                    window.open(service.download_url, '_blank');
+                    showNotification('Mengunduh formulir...', 'info');
+                } else {
+                    showNotification('Formulir tidak tersedia untuk layanan ini.', 'warning');
+                }
+            };
+        }
+        
+        const consultationBtn = document.getElementById('consultation-btn');
+        if (consultationBtn) {
+            consultationBtn.onclick = function() {
+                const phoneNumber = '6281397897480';
+                const waMessage = waMessageSelect.value || 'Halo, saya ingin bertanya.';
+                const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waMessage)}`;
+                window.open(waUrl, '_blank');
+                showNotification('Membuka chat WhatsApp...', 'info');
+            };
+        }
+        
+        const locationBtn = document.getElementById('location-btn');
+        if (locationBtn) {
+            locationBtn.onclick = function() {
+                const mapsUrl = 'https://maps.app.goo.gl/7uqKURtkJpBz2VeB7';
+                window.open(mapsUrl, '_blank');
+                showNotification('Membuka Google Maps...', 'info');
+            };
+        }
     }
     
     function openModal() {

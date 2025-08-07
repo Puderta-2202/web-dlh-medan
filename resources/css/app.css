@@ -1,56 +1,63 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Custom animations and utilities */
 @layer utilities {
-  .animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  .glass-effect {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(209, 213, 219, 0.3);
-  }
-  
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
+    .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .glass-effect {
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 12px;
+        border: 1px solid rgba(209, 213, 219, 0.3);
+    }
+
+    .text-shadow-sm {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f97316, #dc2626);
-  border-radius: 4px;
+    background: linear-gradient(to bottom, #f97316, #dc2626);
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #ea580c, #b91c1c);
+    background: linear-gradient(to bottom, #ea580c, #b91c1c);
 }
 
 /* Smooth transitions for all elements */
 * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+        filter, backdrop-filter;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Focus styles */
@@ -59,57 +66,64 @@ a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #f97316;
-  outline-offset: 2px;
+    outline: 2px solid #f97316;
+    outline-offset: 2px;
 }
 
 /* Loading states */
 .loading {
-  position: relative;
-  pointer-events: none;
+    position: relative;
+    pointer-events: none;
 }
 
 .loading::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 2px solid #f3f3f3;
-  border-top: 2px solid #f97316;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #f97316;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Print styles */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    font-size: 12px;
-    line-height: 1.4;
-    color: black;
-    background: white;
-  }
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12px;
+        line-height: 1.4;
+        color: black;
+        background: white;
+    }
 }
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
-  .mobile-scroll-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .mobile-scroll-hidden::-webkit-scrollbar {
-    display: none;
-  }
+    .mobile-scroll-hidden {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .mobile-scroll-hidden::-webkit-scrollbar {
+        display: none;
+    }
+}
+#main-header.scrolled {
+    @apply bg-white/80 backdrop-blur-xl border-b border-white/20 shadow-lg shadow-orange-500/5;
 }
