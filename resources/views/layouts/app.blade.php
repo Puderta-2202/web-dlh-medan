@@ -9,7 +9,7 @@
         content="@yield('description', 'Dinas Lingkungan Hidup Kota Medan - Melayani masyarakat dalam pengelolaan dan perlindungan lingkungan hidup untuk mewujudkan Kota Medan yang bersih, hijau, dan berkelanjutan.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" type="image/png" href="{{ asset('asset/logo-dlh.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('asset/Images/logo-dlh.png') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
