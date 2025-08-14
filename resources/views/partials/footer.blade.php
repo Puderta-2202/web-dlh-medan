@@ -25,7 +25,7 @@
 
                 <p class="text-gray-300 text-sm leading-relaxed">
                     Berkomitmen untuk menjaga kelestarian lingkungan hidup dan memberikan
-                    pelayanan terbaik kepada masyarakat Kota Medan dengan standar internasional.
+                    pelayanan terbaik kepada masyarakat Kota Medan.
                 </p>
 
                 <div class="space-y-3">
@@ -58,25 +58,14 @@
                     Layanan Kami
                 </h4>
                 <ul class="space-y-3">
-                    @php
-                    $footerServices = [
-                    'Persetujuan Lingkungan',
-                    'AMDAL',
-                    'SKKL',
-                    'UKL-UPL',
-                    'PKPLH',
-                    'SPPL'
-                    ];
-                    @endphp
-
-                    @foreach($footerServices as $service)
+                    @foreach($services as $service)
                     <li>
-                        <a href="#services"
-                            class="text-gray-300 hover:text-orange-400 transition-colors duration-300 text-sm flex items-center group">
+                        <a href="#"
+                            class="text-gray-300 hover:text-orange-400 transition-colors duration-300 text-sm flex items-center group open-service-modal" data-service-id="{{ $service['id'] }}" data-service-title="{{ $service['title'] }}">
                             <div
                                 class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300">
                             </div>
-                            {{ $service }}
+                            {{ $service['title'] }}
                         </a>
                     </li>
                     @endforeach
@@ -122,17 +111,16 @@
                     Tetap Terhubung
                 </h4>
                 <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                    Dapatkan update terbaru tentang program dan kebijakan lingkungan hidup langsung ke email Anda.
+                    Dapatkan update terbaru tentang program dan kebijakan lingkungan hidup melalui media sosial kami.
                 </p>
 
                 <!-- Social Links -->
                 <div class="flex space-x-3 mb-8">
                     @php
                     $socialLinks = [
-                    ['icon' => 'facebook', 'href' => '#', 'label' => 'Facebook', 'color' => 'hover:text-blue-500'],
-                    ['icon' => 'twitter', 'href' => '#', 'label' => 'Twitter', 'color' => 'hover:text-sky-500'],
-                    ['icon' => 'instagram', 'href' => '#', 'label' => 'Instagram', 'color' => 'hover:text-pink-500'],
-                    ['icon' => 'youtube', 'href' => '#', 'label' => 'YouTube', 'color' => 'hover:text-red-500']
+                    ['icon' => 'facebook', 'href' => 'https://www.facebook.com/profile.php?id=100083111581799', 'label' => 'Facebook', 'color' => 'hover:text-blue-500'],
+                    ['icon' => 'instagram', 'href' => 'https://www.instagram.com/dlh_kotamedan/', 'label' => 'Instagram', 'color' => 'hover:text-pink-500'],
+                    ['icon' => 'youtube', 'href' => 'https://www.youtube.com/@dinaslingkunganhidupkotamedan', 'label' => 'YouTube', 'color' => 'hover:text-red-500']
                     ];
                     @endphp
 
@@ -145,7 +133,7 @@
                 </div>
 
                 <!-- Enhanced Newsletter -->
-                <div class="space-y-4">
+                <!-- <div class="space-y-4">
                     <p class="text-sm font-medium text-gray-200">Newsletter</p>
                     <form action="{{ route('newsletter.subscribe') }}" method="POST" class="relative">
                         @csrf
@@ -159,7 +147,7 @@
                     <p class="text-xs text-gray-400">
                         * Kami menghormati privasi Anda dan tidak akan mengirim spam.
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
 
