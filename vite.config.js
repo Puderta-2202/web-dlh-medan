@@ -22,7 +22,7 @@ export default defineConfig({
                 assetFileNames: "assets/[name]-[hash].[ext]",
             },
         },
-        manifest: true,
+        // manifest: true,
         outDir: "public/build",
         assetsDir: "assets",
     },
